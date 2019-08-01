@@ -3,17 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="BarbeariaFirebase.Views.ScheduleTabPage">
+             x:Class="BarbeariaFirebase.Views.ScheduleTabPage"
+             Title="{Binding Title}">
 
 
     <StackLayout>
 
-        <Label Text="Agenda em Construção"/>
+        <Button x:Name="Map"  Text="Criar Serviço" Command="{Binding CreateServiceCommand}" CornerRadius="25"/>
+        <!--AbsoluteLayout.LayoutBounds=".5, .05, .95, .1" AbsoluteLayout.LayoutFlags="All" CornerRadius="25" -->
+    
+        
+        
 
-        <ActivityIndicator x:Name="actInd"
+        <!--<ActivityIndicator x:Name="actInd"
                              IsRunning="{Binding IsBusy}"
                              IsVisible="{Binding IsBusy}" Color="Red"
-                             AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="All" />
+                             AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="All" />-->
+
+
+        <ListView x:Name="listView"  ItemsSource="{Binding BarberServicesList}" CachingStrategy="RecycleElement" RowHeight="60">
+            <!--<ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemTappedCommand}"  EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
+            </ListView.Behaviors>-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell  x:Name="dataCell" >
+
+
+                        <Grid Padding="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <!--<Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White" Source="{Binding ImagePath, Converter={StaticResource PathToImageConverter} }"   Aspect="AspectFill"/>-->
+                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White"    Text="{Binding ServiceName}" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding  ServicePrice}" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding ServiceDetail}"/>
+                        </Grid>
+
+                        <ViewCell.ContextActions>
+                            <MenuItem 
+                            Text="Editar"
+                            Command="{Binding ItemTappedCommand}"
+                            BindingContext="{Binding Source={x:Reference listView}, Path=BindingContext}"
+                            CommandParameter="{Binding Source={x:Reference dataCell}, Path=BindingContext}"/>
+                        </ViewCell.ContextActions>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </StackLayout>
     

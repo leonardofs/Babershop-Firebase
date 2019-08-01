@@ -10,14 +10,14 @@
         <!--x, y, width, height-->
 
         <Label x:Name="Call"  Style="{DynamicResource TitleLabel}" Text="Faça-nos uma Ligação: (37) 3222-2222" 
-               AbsoluteLayout.LayoutBounds=".5,0,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="red">
+               AbsoluteLayout.LayoutBounds=".5,0.1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="red">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding CallBarberCommand}"/>
             </Label.GestureRecognizers>
         </Label>
 
         <Button x:Name="Map"  Text="Abri no Mapa" Command="{Binding OpenMapCommand}"
-               AbsoluteLayout.LayoutBounds=".5, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" >
+               AbsoluteLayout.LayoutBounds=".5, .95, .95, .1" AbsoluteLayout.LayoutFlags="All" CornerRadius="30" >
         </Button>
 
 

@@ -2,7 +2,7 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="BarbeariaFirebase.Views.MainPage"
-            
+            Title="Barbearia"
             xmlns:local="clr-namespace:BarbeariaFirebase.Views"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             BarBackgroundColor="#2196F3"

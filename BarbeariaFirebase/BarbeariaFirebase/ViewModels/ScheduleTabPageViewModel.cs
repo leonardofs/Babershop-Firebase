@@ -8,29 +8,69 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Essentials;
+using BarbeariaFirebase.Services;
+using System.Threading.Tasks;
 
 namespace BarbeariaFirebase.ViewModels
 {
     public class ScheduleTabPageViewModel : ViewModelBase
     {
+        public DelegateCommand CreateServiceCommand { get; set; }
+        public FireBaseRepository fireBase;
         public ObservableCollection<BarberService> BarberServicesList { get; }
         public IPageDialogService pageDialogService;
         public NetworkAccess current ;
 
+
+
+
+
         public ScheduleTabPageViewModel(INavigationService navigationService, IPageDialogService _pageDialogService) : base(navigationService)
         {
             pageDialogService = _pageDialogService; // DI
+            fireBase = new FireBaseRepository();
+
+
 
             Title = "Agendar";
-            BarberServicesList = new ObservableCollection<BarberService>();  
+           BarberServicesList = fireBase.GetBarberServicesList();
+
+
+            CreateServiceCommand = new DelegateCommand(async () => await CreateService());
+
 
             if (current == NetworkAccess.Internet)
             {
-                SyncServices();
+               
+                //SyncServices();
             }
+
         }
 
+        public async Task CreateService() {
+           
+            try
+            {
+                IsBusy = true;
+               
+               
+                await fireBase.PostBarberService(new BarberService
+                {
+                    Id = "1",
+                    ServiceName = "Cortar cabelo",
+                    ServiceDetail = "Corte de cabelo Marculino Simples",
+                    ServiceImage = null,
+                    ServicePrice = "10.50"
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                await pageDialogService.DisplayAlertAsync("ex", ex.ToString(), "ok");
+            }
+            finally { IsBusy = false; }
 
+        }
         async void SyncServices() {
 
             if (!IsBusy)
@@ -89,6 +129,8 @@ namespace BarbeariaFirebase.ViewModels
         //        }
         //    }
         //}
+
+      
     }
 }
 
