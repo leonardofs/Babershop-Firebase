@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+             x:Class="BarbeariaFirebase.App">
+	<Application.Resources>
+
+
+            <ResourceDictionary>
+
+                <!-- PALETA DE CORES -->
+
+                <Color x:Key="StatusBarColor">#1B5E20</Color>
+                <Color x:Key="TabBarColor">#43A047</Color>
+                <Color x:Key="BackgroundColor">#381C784</Color>
+                <Color x:Key="SecondaryColor">#78db7c</Color>
+
+                <!-- ESTILOS -->
+
+                <Style x:Key="StatusLabel" TargetType="Label">
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="FontSize" Value="22" />
+                    <Setter Property="FontFamily" Value="Arial" />
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="BackgroundColor" Value="{DynamicResource StatusBarColor}"/>
+                    <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                    <Setter Property="VerticalTextAlignment" Value="Center"/>
+                </Style>
+
+                <Style x:Key="StatusRLabel" TargetType="Label">
+                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="FontFamily" Value="Arial" />
+                    <Setter Property="Margin" Value="20,0,0,5"/>
+                    <Setter Property="VerticalTextAlignment" Value="Center"/>
+                </Style>
+
+                <Style x:Key="Entrys" TargetType="Entry">
+                    <Setter Property="PlaceholderColor" Value="{DynamicResource TabBarColor}" />
+                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                    <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryColor}" />
+                    <Setter Property="FontSize" Value="Small" />
+
+                </Style>
+
+                <Style x:Key="TitleLabel" TargetType="Label">
+                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                    <Setter Property="FontSize" Value="Small" />
+                    <Setter Property="FontFamily" Value="Arial" />
+                    <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                    <Setter Property="VerticalTextAlignment" Value="Center"/>
+                </Style>
+
+                <Style x:Key="MainLabel" TargetType="Label">
+                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="FontFamily" Value="Arial" />
+                    <Setter Property="HorizontalOptions" Value="Center"/>
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+
+                <Style x:Key="MenuLabel" TargetType="Label">
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="FontFamily" Value="Arial" />
+                    <Setter Property="HorizontalOptions" Value="Center"/>
+                </Style>
+
+                <Style  x:Key="LoginButton" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#3B5998" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="HeightRequest" Value="70" />
+                    <Setter Property="BorderRadius" Value="4" />
+                    <Setter Property="Image">
+                        <Setter.Value>
+                            <OnPlatform x:TypeArguments="FileImageSource" Android="facebook.png" WinPhone="Assets/facebook.png" iOS="Resources/facebook.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style  x:Key="LogOutButton" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="DarkRed" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="HeightRequest" Value="70" />
+                    <Setter Property="BorderRadius" Value="4" />
+                    <Setter Property="Image">
+                        <Setter.Value>
+                            <OnPlatform x:TypeArguments="FileImageSource" Android="facebook.png" WinPhone="Assets/facebook.png" iOS="Resources/facebook.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="Banner" TargetType="Image">
+                    <Setter Property="Source">
+                        <Setter.Value>
+                            <OnIdiom x:TypeArguments="ImageSource">
+                                <OnIdiom.Phone>
+                                    <OnPlatform x:TypeArguments="ImageSource" iOS="Resources/banner.png" Android="banner.png"  />
+                                </OnIdiom.Phone>
+                                <OnIdiom.Desktop>
+                                    <OnPlatform x:TypeArguments="ImageSource"  WinPhone="Assets/bannerDesktop.png" />
+                                </OnIdiom.Desktop>
+                                <OnIdiom.Tablet>
+                                    <OnPlatform x:TypeArguments="ImageSource"  WinPhone="Assets/bannerDesktop.png" />
+                                </OnIdiom.Tablet>
+                            </OnIdiom>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style  x:Key="AdminButton" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#a4d6a6" />
+                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                    <Setter Property="HeightRequest" Value="70" />
+                    <Setter Property="BorderRadius" Value="4" />
+                </Style>
+
+                <Style  x:Key="MainButton" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="{StaticResource TabBarColor}" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="HeightRequest" Value="70" />
+                    <Setter Property="BorderRadius" Value="4" />
+                </Style>
+
+                <Style x:Key="NavigationPage" TargetType="NavigationPage">
+                    <Setter Property="BarBackgroundColor" Value="{StaticResource StatusBarColor}"/>
+                    <Setter Property="BarTextColor" Value="White"/>
+                </Style>
+
+                <Style x:Key="TabbedPage" TargetType="TabbedPage">
+                    <Setter Property="BarBackgroundColor" Value="{StaticResource TabBarColor}"/>
+                    <Setter Property="BarTextColor" Value="White"/>
+                </Style>
+            </ResourceDictionary>
+
+    </Application.Resources>
+</prism:PrismApplication>
