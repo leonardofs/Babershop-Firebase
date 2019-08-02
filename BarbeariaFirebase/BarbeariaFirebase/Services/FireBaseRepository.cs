@@ -17,11 +17,7 @@ namespace BarbeariaFirebase.Services
 
         private ObservableCollection<BarberService> _barberServicesList;
 
-        public ObservableCollection<BarberService> BarberServicesList
-        {
-            get { return _barberServicesList; }
-            set { _barberServicesList = value; OnPropertyChanged(); }
-        }
+        public ObservableCollection<BarberService> BarberServicesList{ get; set;  }
 
         /// <summary>
         /// Construtor

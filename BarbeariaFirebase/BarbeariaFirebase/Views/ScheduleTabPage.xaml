@@ -1,15 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:BarbeariaFirebase.Converters;assembly=BarbeariaFirebase"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="BarbeariaFirebase.Views.ScheduleTabPage"
              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+    </ContentPage.Resources>
 
+    <StackLayout >
 
-    <StackLayout>
-
-        <Button x:Name="Map"  Text="Criar Serviço" Command="{Binding CreateServiceCommand}" CornerRadius="25"/>
+        
         <!--AbsoluteLayout.LayoutBounds=".5, .05, .95, .1" AbsoluteLayout.LayoutFlags="All" CornerRadius="25" -->
     
         
@@ -22,9 +26,9 @@
 
 
         <ListView x:Name="listView"  ItemsSource="{Binding BarberServicesList}" CachingStrategy="RecycleElement" RowHeight="60">
-            <!--<ListView.Behaviors>
+            <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemTappedCommand}"  EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
-            </ListView.Behaviors>-->
+            </ListView.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell  x:Name="dataCell" >
@@ -56,6 +60,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+
+        <Button x:Name="Map"  Text="Criar Serviço" Command="{Binding CreateServiceCommand}" CornerRadius="25"/>
 
     </StackLayout>
     

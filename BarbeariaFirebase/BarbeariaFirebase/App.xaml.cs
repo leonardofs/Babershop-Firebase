@@ -32,6 +32,8 @@ namespace BarbeariaFirebase
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<AboutTabPage, AboutTabPageViewModel>();
             containerRegistry.RegisterForNavigation<ScheduleTabPage, ScheduleTabPageViewModel>();
+            containerRegistry.RegisterForNavigation<DaysPage, DaysPageViewModel>();
+            containerRegistry.RegisterForNavigation<HoursPage, HoursPageViewModel>();
         }
     }
 }

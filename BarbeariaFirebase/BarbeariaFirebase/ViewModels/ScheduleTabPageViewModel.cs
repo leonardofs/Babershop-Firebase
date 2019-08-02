@@ -10,12 +10,14 @@ using System.Linq;
 using Xamarin.Essentials;
 using BarbeariaFirebase.Services;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace BarbeariaFirebase.ViewModels
 {
     public class ScheduleTabPageViewModel : ViewModelBase
     {
         public DelegateCommand CreateServiceCommand { get; set; }
+        public DelegateCommand<BarberService> ItemTappedCommand{ get;  }
         public FireBaseRepository fireBase;
         public ObservableCollection<BarberService> BarberServicesList { get; }
         public IPageDialogService pageDialogService;
@@ -37,8 +39,8 @@ namespace BarbeariaFirebase.ViewModels
 
 
             CreateServiceCommand = new DelegateCommand(async () => await CreateService());
-
-
+            ItemTappedCommand = new DelegateCommand<BarberService>(async (BarberService ser) => await ItemTapped(ser));
+            
             if (current == NetworkAccess.Internet)
             {
                
@@ -46,6 +48,7 @@ namespace BarbeariaFirebase.ViewModels
             }
 
         }
+
 
         public async Task CreateService() {
            
@@ -71,40 +74,64 @@ namespace BarbeariaFirebase.ViewModels
             finally { IsBusy = false; }
 
         }
-        async void SyncServices() {
 
-            if (!IsBusy)
+        public async Task ItemTapped(BarberService serviceTapped)
+        {
+           
+            if (serviceTapped != null)
             {
-                Exception Error = null;
-                BarberServicesList.Clear();
-                try
-                {
-                    IsBusy = true;
-                    //var Repository = new Repository();
-                    //var Items = await Repository.GetServices();
-                    //foreach (var Service in Items)
-                    //{
-                    //    BarberServicesList.Add(Service);
-                    //}
 
+                    NavigationParameters navigationParams = new NavigationParameters
+                        {
+                            { "serviceTapped", serviceTapped}
+                        };
 
-                    //ToDo: implementar logica do Firebase
-                }
-                catch (Exception ex)
-                {
-                    Error = ex;
-                }
-                finally
-                {
-                    IsBusy = false;
-                }
-                if (Error != null)
-                {
-                    await pageDialogService.DisplayAlertAsync("Erro", Error.Message, "OK");
-                }
+                        await navigationService.NavigateAsync("DaysPage", navigationParams, false);
+
+            } else{
+                    // todo: usar toast, verificar conexao e login
+                    await pageDialogService.DisplayAlertAsync("Sem rede", "Não é possível fazer agendamentos sem conexão com a internet", "OK");
             }
-            return;
         }
+
+    }
+
+
+
+       //async void SyncServices() {
+
+       //     if (!IsBusy)
+       //     {
+       //         Exception Error = null;
+       //         BarberServicesList.Clear();
+       //         try
+       //         {
+       //             IsBusy = true;
+       //             //var Repository = new Repository();
+       //             //var Items = await Repository.GetServices();
+       //             //foreach (var Service in Items)
+       //             //{
+       //             //    BarberServicesList.Add(Service);
+       //             //}
+
+
+       //             //ToDo: implementar logica do Firebase
+       //         }
+       //         catch (Exception ex)
+       //         {
+       //             Error = ex;
+       //         }
+       //         finally
+       //         {
+       //             IsBusy = false;
+       //         }
+       //         if (Error != null)
+       //         {
+       //             await pageDialogService.DisplayAlertAsync("Erro", Error.Message, "OK");
+       //         }
+       //     }
+       //     return;
+       // }
 
         //public async void Navigate(object serviceTapped)
         //{
@@ -131,6 +158,6 @@ namespace BarbeariaFirebase.ViewModels
         //}
 
       
-    }
+    
 }
 

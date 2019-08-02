@@ -10,7 +10,7 @@ namespace BarbeariaFirebase.ViewModels
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
-        protected INavigationService NavigationService { get; private set; }
+        protected INavigationService navigationService { get; private set; }
 
 
 
@@ -33,10 +33,10 @@ namespace BarbeariaFirebase.ViewModels
             get { return !IsBusy; }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService _navigationService)
         {
             //Dependency Injection 
-            NavigationService = navigationService;
+            navigationService = _navigationService;
 
 
 

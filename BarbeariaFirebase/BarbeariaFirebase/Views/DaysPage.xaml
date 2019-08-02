@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BarbeariaFirebase.Views.DaysPage"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:BarbeariaFirebase.Converters;assembly=BarbeariaFirebase"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <c:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
+        <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+    </ContentPage.Resources>
+    
+    <ListView x:Name="listView"  ItemsSource="{Binding Dates}" CachingStrategy="RecycleElement" RowHeight="60">
+        <ListView.Behaviors>
+            <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemTappedCommand}"  EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
+        </ListView.Behaviors>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell  x:Name="dataCell" >
+
+
+                    <Grid Padding="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <!--<Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White" Source="{Binding ImagePath, Converter={StaticResource PathToImageConverter} }"   Aspect="AspectFill"/>-->
+                        <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Text="{Binding Date, Converter={StaticResource DateTimeToStringConverter}}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    </Grid>
+
+                    <!--<ViewCell.ContextActions>
+                        <MenuItem 
+                            Text="Editar"
+                            Command="{Binding ItemTappedCommand}"
+                            BindingContext="{Binding Source={x:Reference listView}, Path=BindingContext}"
+                            CommandParameter="{Binding Source={x:Reference dataCell}, Path=BindingContext}"/>
+                    </ViewCell.ContextActions>-->
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+
+
+</ContentPage>
