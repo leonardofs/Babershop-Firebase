@@ -14,7 +14,7 @@ namespace BarbeariaFirebase.ViewModels
     {
         public ObservableCollection<DateTime> Dates { get; }
         private INavigationParameters _navigationParams;
-        public DelegateCommand<DateTime> ItemTappedCommand { get; set; }
+        public DelegateCommand<Object> ItemTappedCommand { get; set; }
 
         public DaysPageViewModel(INavigationService navigationService) : base(navigationService)
         {
@@ -22,7 +22,7 @@ namespace BarbeariaFirebase.ViewModels
             Dates = new ObservableCollection<DateTime>();
             FillDaysCollection();
 
-            ItemTappedCommand = new DelegateCommand<DateTime>(async (DateTime date) => await ItemTapped(date));
+            ItemTappedCommand = new DelegateCommand<Object>(async (Object date) => await ItemTapped(date));
 
         }
 
@@ -50,7 +50,7 @@ namespace BarbeariaFirebase.ViewModels
         }
 
 
-        public async Task ItemTapped(DateTime dayTapped)
+        public async Task ItemTapped(Object dayTapped)
         {
 
             if (dayTapped != null)

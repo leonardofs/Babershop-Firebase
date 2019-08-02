@@ -17,7 +17,7 @@ namespace BarbeariaFirebase.ViewModels
     public class ScheduleTabPageViewModel : ViewModelBase
     {
         public DelegateCommand CreateServiceCommand { get; set; }
-        public DelegateCommand<BarberService> ItemTappedCommand{ get;  }
+        public DelegateCommand<Object> ItemTappedCommand{ get;  }
         public FireBaseRepository fireBase;
         public ObservableCollection<BarberService> BarberServicesList { get; }
         public IPageDialogService pageDialogService;
@@ -39,7 +39,7 @@ namespace BarbeariaFirebase.ViewModels
 
 
             CreateServiceCommand = new DelegateCommand(async () => await CreateService());
-            ItemTappedCommand = new DelegateCommand<BarberService>(async (BarberService ser) => await ItemTapped(ser));
+            ItemTappedCommand = new DelegateCommand<Object>(async (Object obj) => await ItemTapped(obj));
             
             if (current == NetworkAccess.Internet)
             {
@@ -75,7 +75,7 @@ namespace BarbeariaFirebase.ViewModels
 
         }
 
-        public async Task ItemTapped(BarberService serviceTapped)
+        public async Task ItemTapped(Object serviceTapped)
         {
            
             if (serviceTapped != null)
