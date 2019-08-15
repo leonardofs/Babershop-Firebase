@@ -38,12 +38,14 @@ namespace BarbeariaFirebase
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            //containerRegistry.RegisterForNavigation<MyNavigationPage,MyNavigationPageViewModel>();     
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<AboutTabPage, AboutTabPageViewModel>();
             containerRegistry.RegisterForNavigation<ScheduleTabPage, ScheduleTabPageViewModel>();
             containerRegistry.RegisterForNavigation<DaysPage, DaysPageViewModel>();
             containerRegistry.RegisterForNavigation<HoursPage, HoursPageViewModel>();
+            containerRegistry.RegisterForNavigation<loginPage, loginPageViewModel>();
         }
     }
 }

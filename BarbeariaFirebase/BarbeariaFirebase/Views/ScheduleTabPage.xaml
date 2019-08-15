@@ -6,6 +6,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="BarbeariaFirebase.Views.ScheduleTabPage"
+             xmlns:views="clr-namespace:BarbeariaFirebase.Views"
              Title="{Binding Title}">
     <ContentPage.IconImageSource>
         <FontImageSource Glyph="calendar-alt" 
@@ -18,10 +19,8 @@
 
     <StackLayout >
 
-        
 
-
-        <ListView x:Name="listView"  ItemsSource="{Binding BarberServicesList}" CachingStrategy="RecycleElement" RowHeight="60">
+        <!--<ListView x:Name="listView"  ItemsSource="{Binding BarberServicesList}" CachingStrategy="RecycleElement" RowHeight="60">
             <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemTappedCommand}"  EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
             </ListView.Behaviors>
@@ -41,7 +40,7 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <!--<Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White" Source="{Binding ImagePath, Converter={StaticResource PathToImageConverter} }"   Aspect="AspectFill"/>-->
+                            --><!--<Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White" Source="{Binding ImagePath, Converter={StaticResource PathToImageConverter} }"   Aspect="AspectFill"/>--><!--
                             <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White" Text="{Binding ServiceName}" />
                             <Image Grid.Row="0" Grid.Column="2" >
                                 <Image.Source >
@@ -64,6 +63,86 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            
+            <ListView.Footer>
+                <ActivityIndicator IsRunning="True">
+                    <ActivityIndicator.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="Android" Value="{StaticResource primaryColor}" />
+                        </OnPlatform>
+                    </ActivityIndicator.Color>
+                </ActivityIndicator>
+            </ListView.Footer>
+
+        </ListView>-->
+
+        <ListView x:Name="listView"  ItemsSource="{Binding BarberServicesList}" 
+                  CachingStrategy="RecycleElement" 
+                
+                  IsPullToRefreshEnabled="False"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemTappedCommand}"  EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"/>
+                </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell  x:Name="dataCell" >
+                        <ViewCell.View>
+                            <StackLayout Spacing="{DynamicResource CardSpacing}"
+                                         Padding="{DynamicResource CardPadding}">
+                                <views:CardView>
+                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                                        <Grid HeightRequest="120" BackgroundColor="{StaticResource ImageBackgroundColor}">
+                                            <!--<BoxView BackgroundColor="Red"></BoxView>-->
+                                            
+                                            <Image x:Name="photoImage" Source="{Binding ServiceImage}" Aspect="AspectFill" />
+                                           
+                                            <!--TODO IMAGEM DO PRODUTO-->
+                                        </Grid>
+
+                                        <StackLayout Padding="10, 10, 10, 3">
+                                            <StackLayout>
+                                                <Label Text="{Binding ServiceName}" FontSize="Medium"
+                                                   TextColor="{StaticResource Accent}"
+                                                   VerticalOptions="CenterAndExpand" />
+
+                                                <Label Text="{Binding ServiceDetail}"
+                                              
+                                                   FontSize="Micro"
+                                                   TextColor="Gray" />
+                                            </StackLayout>
+
+                                            <views:HeaderDivider />
+
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="R$ "
+                                                       FontSize="Small"
+                                                       TextColor="{StaticResource asphaltPrimary}"
+                                                       VerticalOptions="CenterAndExpand" />
+
+                                                    <Label Text="{Binding ServicePrice, StringFormat='{0:C}'}"
+                                                       FontSize="Small"
+                                                       VerticalOptions="CenterAndExpand" />
+                                                </StackLayout>
+
+
+                                            </Grid>
+
+                                        </StackLayout>
+                                    </StackLayout>
+                                </views:CardView>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
 
@@ -73,7 +152,7 @@
                 BackgroundColor="{StaticResource Accent}"
                 Command="{Binding CreateServiceCommand}" 
                 CornerRadius="10"
-                Margin="0,0,0,5"/>
+                Margin="5,0,5,5"/>
 
     </StackLayout>
     

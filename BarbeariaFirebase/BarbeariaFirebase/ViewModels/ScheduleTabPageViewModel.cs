@@ -62,7 +62,7 @@ namespace BarbeariaFirebase.ViewModels
                     Id = "1",
                     ServiceName = "Cortar cabelo",
                     ServiceDetail = "Corte de cabelo Marculino Simples",
-                    ServiceImage = null,
+                    ServiceImage = "https://firebasestorage.googleapis.com/v0/b/barbearia-divi.appspot.com/o/Corte.png?alt=media&token=ac5fffa8-2566-46cd-bb2f-fa2f9b319952",
                     ServicePrice = "10.50"
                 });
             }

@@ -10,11 +10,25 @@
                                  FontFamily="{StaticResource FontAwesomeSolid}"
                                 Color="White"/>
     </ContentPage.IconImageSource>
-    <StackLayout>
 
-        <!--Image Style="{DynamicResource Banner}" /-->
-        <!--Label  Text="{Binding ConceptText}" /-->
-        <Label  Style="{DynamicResource MainLabel}" Text="{Binding ConceptText}" />
+    <!--<Grid BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="#FF5722">
+            <Image Source="logo.png" Aspect="AspectFill" />
+        </Grid>-->
 
-    </StackLayout>
+    <AbsoluteLayout>
+        <!--x, y, largura, altura-->
+        <ScrollView>
+            <StackLayout  >
+             <Image Style="{DynamicResource Logo}" AbsoluteLayout.LayoutBounds=".5,0.05,0.5,0.5" AbsoluteLayout.LayoutFlags="All"/>
+            <!--Label  Text="{Binding ConceptText}" /-->
+             <Label  Style="{DynamicResource MainLabel}" Text="{Binding ConceptText}" HorizontalTextAlignment="Center" Margin="10,10,10,10"/>
+
+        </StackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
 </ContentPage>

@@ -4,32 +4,35 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="BarbeariaFirebase.Views.loginPage"
-             Title="Login">
+             Title="Login"
+             BackgroundImageSource="back.jpg">
     
     <ContentPage.IconImageSource>
         <FontImageSource Glyph="sign-in-alt" 
                                  FontFamily="{StaticResource FontAwesomeSolid}"
                                 Color="White"/>
     </ContentPage.IconImageSource>
+   
 
     <!--<AbsoluteLayout>-->
 
 
         <!--<Grid Padding="0" RowSpacing="0" ColumnSpacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >-->
 
-        <Grid>
+        <Grid BackgroundColor="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Image Source="back.jpg" Grid.RowSpan="2" Aspect="AspectFill" />
+            <!--<Image Source="back.jpg"  Aspect="AspectFill" />-->
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="20,10,10,20" Grid.RowSpan="2" >
-                    <Entry Placeholder="usuario" FontSize="Large"   
+                
+                <Entry Placeholder="usuario" FontSize="Large"   
                 FontFamily="Georgia" HeightRequest="50">
                         <Entry.PlaceholderColor>
                             <OnPlatform x:TypeArguments="Color" Android="Silver" />
@@ -49,15 +52,15 @@
                     </Entry>
                     <BoxView Color="Transparent" HeightRequest="10" />
 
-                    <Button Text="registrar" 
+                    <Button Text="Conectar" 
                             BackgroundColor="#3b5998" 
                             TextColor="#ffffff"   
-                            FontSize="Large" CornerRadius="10"/>
+                            FontSize="Large" CornerRadius="10" Command="{Binding LoginCommand}"/>
 
-                    <Button Text="entrar"
+                    <Button Text="Registrar"
                             BackgroundColor="#fa3c4c"
                             TextColor="#ffffff"   
-                            FontSize="Large" CornerRadius="10"/>
+                            FontSize="Large" CornerRadius="10"  Command="{Binding RegisterCommand}"/>
                 </StackLayout>
 
             </Grid>

@@ -52,6 +52,22 @@
                       Value="/Assets/FontAwesome5Regular.otf#Font Awesome 5 Free" />
             </OnPlatform>
 
+            <OnPlatform x:TypeArguments="Thickness" Android="12,8" iOS="0, 0, 0, 10" WinPhone="0,0,0,16"
+                        x:Key="CardPadding" />
+
+            <OnPlatform x:TypeArguments="Thickness" Android="15" iOS="15" WinPhone="20" x:Key="FoodDetailtPadding" />
+
+            <OnPlatform x:TypeArguments="x:Double" Android="14" iOS="0" WinPhone="0" x:Key="CardSpacing" />
+
+            <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="#EFEFF4" WinPhone="#EFEFF4"
+                        x:Key="WindowBackgroundTable" />
+            
+            <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="White" WinPhone="White" x:Key="WindowBackground" />
+            
+            <OnPlatform x:TypeArguments="Color" Android="#ECECEC" iOS="#C8C7CC" WinPhone="#C8C7CC" x:Key="Divider" />
+
+
+
             <!-- PALETA DE CORES -->
 
             <Color x:Key="Primary">#8d6e63</Color>
@@ -66,12 +82,16 @@
             <Color x:Key="secondaryDarkColor">#ac0800</Color>
             <Color x:Key="primaryTextColor">#ffffff</Color>
             <Color x:Key="secondaryTextColor">#000000</Color>
-
+            <Color x:Key="ImageBackgroundColor">#ffc9a9</Color>
             <Color x:Key="StatusBarColor">#5f4339</Color>
             <Color x:Key="TabBarColor">#8c6d62</Color>
             <Color x:Key="BackgroundColor">#bd9b8f</Color>
             <Color x:Key="SecondaryColor">#e64a19</Color>
+            
 
+            <Color x:Key="asphaltPrimary">#365271</Color>
+            <Color x:Key="asphaltLight">#889DB5</Color>
+            <Color x:Key="asphaltDark">#1C2B39</Color>
             <!-- ESTILOS -->
 
             <Style x:Key="StatusLabel" TargetType="Label">
@@ -151,19 +171,28 @@
                     <Setter Property="Source">
                         <Setter.Value>
                             <OnIdiom x:TypeArguments="ImageSource">
-                                <OnIdiom.Phone>
-                                    <OnPlatform x:TypeArguments="ImageSource" iOS="Resources/back.jpg" Android="back.jpg"  />
-                                </OnIdiom.Phone>
-                                <OnIdiom.Desktop>
-                                    <OnPlatform x:TypeArguments="ImageSource"  WinPhone="Assets/bannerDesktop.png" />
-                                </OnIdiom.Desktop>
-                                <OnIdiom.Tablet>
-                                    <OnPlatform x:TypeArguments="ImageSource"  WinPhone="Assets/bannerDesktop.png" />
-                                </OnIdiom.Tablet>
-                            </OnIdiom>
+                            <OnIdiom.Phone>
+                                <OnPlatform x:TypeArguments="ImageSource" iOS="Resources/back.jpg" Android="back.jpg"  />
+                            </OnIdiom.Phone>
+                        </OnIdiom>
                         </Setter.Value>
                     </Setter>
                 </Style>
+
+            <Style x:Key="Logo" TargetType="Image">
+                <Setter Property="Source">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="ImageSource">
+                            <OnIdiom.Phone>
+                                <OnPlatform x:TypeArguments="ImageSource" iOS="Resources/logo.png" Android="logo.png"  />
+                            </OnIdiom.Phone>
+                        </OnIdiom>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+
 
             <!--<Style  x:Key="AdminButton" TargetType="Button">
                     <Setter Property="BackgroundColor" Value="#a4d6a6" />

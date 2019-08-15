@@ -13,7 +13,7 @@ namespace BarbeariaFirebase.ViewModels
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
-            Title = "Home";
+            Title = "Haircuts Shaves - BarberShop";
         }
     }
 }
