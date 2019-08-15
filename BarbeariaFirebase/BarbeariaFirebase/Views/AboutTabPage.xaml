@@ -5,6 +5,11 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="BarbeariaFirebase.Views.AboutTabPage"
             Title="{Binding Title}">
+    <ContentPage.IconImageSource>
+        <FontImageSource Glyph="info-circle" 
+                                 FontFamily="{StaticResource FontAwesomeSolid}"
+                                Color="White"/>
+    </ContentPage.IconImageSource>
     <StackLayout>
 
         <!--Image Style="{DynamicResource Banner}" /-->

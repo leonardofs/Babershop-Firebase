@@ -3,16 +3,19 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="BarbeariaFirebase.Views.MainPage"
             Title="Barbearia"
-            xmlns:local="clr-namespace:BarbeariaFirebase.Views"
+            xmlns:pages="clr-namespace:BarbeariaFirebase.Views"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            BarBackgroundColor="#2196F3"
-            BarTextColor="White"
+            BarBackgroundColor="{StaticResource primaryColor}"
+            SelectedTabColor="{StaticResource secondaryLightColor}"
+            UnselectedTabColor="White"
+            BarTextColor="{StaticResource primaryTextColor}"
             android:TabbedPage.ToolbarPlacement="Bottom">
 
     <TabbedPage.Children>
-        <local:AboutTabPage/>
-        <local:ContactTabPage />
-        <local:ScheduleTabPage/>
+        <pages:AboutTabPage />
+        <pages:ContactTabPage  />
+        <pages:ScheduleTabPage/>
+        <pages:loginPage/>
     </TabbedPage.Children>
 
 

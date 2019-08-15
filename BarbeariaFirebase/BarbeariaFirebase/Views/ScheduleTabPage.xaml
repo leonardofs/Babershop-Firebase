@@ -7,6 +7,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="BarbeariaFirebase.Views.ScheduleTabPage"
              Title="{Binding Title}">
+    <ContentPage.IconImageSource>
+        <FontImageSource Glyph="calendar-alt" 
+                                 FontFamily="{StaticResource FontAwesomeSolid}"
+                                Color="White"/>
+    </ContentPage.IconImageSource>
     <ContentPage.Resources>
         <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
     </ContentPage.Resources>
@@ -14,15 +19,6 @@
     <StackLayout >
 
         
-        <!--AbsoluteLayout.LayoutBounds=".5, .05, .95, .1" AbsoluteLayout.LayoutFlags="All" CornerRadius="25" -->
-    
-        
-        
-
-        <!--<ActivityIndicator x:Name="actInd"
-                             IsRunning="{Binding IsBusy}"
-                             IsVisible="{Binding IsBusy}" Color="Red"
-                             AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="All" />-->
 
 
         <ListView x:Name="listView"  ItemsSource="{Binding BarberServicesList}" CachingStrategy="RecycleElement" RowHeight="60">
@@ -42,10 +38,19 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <!--<Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White" Source="{Binding ImagePath, Converter={StaticResource PathToImageConverter} }"   Aspect="AspectFill"/>-->
-                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White"    Text="{Binding ServiceName}" />
-                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding  ServicePrice}" />
+                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="White" Text="{Binding ServiceName}" />
+                            <Image Grid.Row="0" Grid.Column="2" >
+                                <Image.Source >
+                                    <FontImageSource Glyph="dollar-sign" 
+                                    FontFamily="{StaticResource FontAwesomeSolid}"
+                                    Color="Black"/>
+                                </Image.Source>
+                            </Image>
+                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding  ServicePrice}" VerticalOptions="Center"  />
                             <Label Grid.Row="1" Grid.Column="1" Text="{Binding ServiceDetail}"/>
                         </Grid>
 
@@ -62,7 +67,13 @@
         </ListView>
 
 
-        <Button x:Name="Map"  Text="Criar Serviço" Command="{Binding CreateServiceCommand}" CornerRadius="25"/>
+        <Button x:Name="Map"  
+                Text="Criar Serviço" 
+                TextColor="{StaticResource primaryTextColor}"
+                BackgroundColor="{StaticResource Accent}"
+                Command="{Binding CreateServiceCommand}" 
+                CornerRadius="10"
+                Margin="0,0,0,5"/>
 
     </StackLayout>
     

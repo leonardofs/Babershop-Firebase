@@ -2,71 +2,128 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
-             x:Class="BarbeariaFirebase.App">
-	<Application.Resources>
+             x:Class="BarbeariaFirebase.App"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.PrefersStatusBarHidden="True"
+             >
+  
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--Definição de Cores padrões do APP -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{DynamicResource Primary}"/>
+                <Setter Property="BarTextColor" Value="White"/>
+
+            </Style>
 
 
-            <ResourceDictionary>
 
-                <!-- PALETA DE CORES -->
 
-                <Color x:Key="StatusBarColor">#1B5E20</Color>
-                <Color x:Key="TabBarColor">#43A047</Color>
-                <Color x:Key="BackgroundColor">#381C784</Color>
-                <Color x:Key="SecondaryColor">#78db7c</Color>
+            <!-- FontFamily FontAwessome-->
+            <OnPlatform x:TypeArguments="x:String" 
+                    x:Key="FontAwesomeBrands">
+                <On Platform="Android" 
+                      Value="FontAwesome5Brands.otf#Regular" />
+                <On Platform="iOS" 
+                      Value="FontAwesome5Brands-Regular" />
+                <On Platform="UWP" 
+                      Value="/Assets/FontAwesome5Brands.otf#Font Awesome 5 Brands" />
+            </OnPlatform>
 
-                <!-- ESTILOS -->
+            <OnPlatform x:TypeArguments="x:String" 
+                    x:Key="FontAwesomeSolid">
+                <On Platform="Android" 
+                      Value="FontAwesome5Solid.otf#Regular" />
+                <On Platform="iOS" 
+                      Value="FontAwesome5Free-Solid" />
+                <On Platform="UWP" 
+                      Value="/Assets/FontAwesome5Solid.otf#Font Awesome 5 Free" />
+            </OnPlatform>
 
-                <Style x:Key="StatusLabel" TargetType="Label">
-                    <Setter Property="TextColor" Value="White" />
-                    <Setter Property="FontSize" Value="22" />
-                    <Setter Property="FontFamily" Value="Arial" />
-                    <Setter Property="Margin" Value="10"/>
-                    <Setter Property="BackgroundColor" Value="{DynamicResource StatusBarColor}"/>
-                    <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                    <Setter Property="VerticalTextAlignment" Value="Center"/>
-                </Style>
+            <OnPlatform x:TypeArguments="x:String" 
+                    x:Key="FontAwesomeRegular">
+                <On Platform="Android" 
+                      Value="FontAwesome5Regular.otf#Regular" />
+                <On Platform="iOS" 
+                      Value="FontAwesome5Free-Regular" />
+                <On Platform="UWP" 
+                      Value="/Assets/FontAwesome5Regular.otf#Font Awesome 5 Free" />
+            </OnPlatform>
 
-                <Style x:Key="StatusRLabel" TargetType="Label">
-                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
-                    <Setter Property="FontSize" Value="15" />
-                    <Setter Property="FontFamily" Value="Arial" />
-                    <Setter Property="Margin" Value="20,0,0,5"/>
-                    <Setter Property="VerticalTextAlignment" Value="Center"/>
-                </Style>
+            <!-- PALETA DE CORES -->
 
-                <Style x:Key="Entrys" TargetType="Entry">
-                    <Setter Property="PlaceholderColor" Value="{DynamicResource TabBarColor}" />
-                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
-                    <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryColor}" />
-                    <Setter Property="FontSize" Value="Small" />
+            <Color x:Key="Primary">#8d6e63</Color>
+            <Color x:Key="PrimaryDark">#5f4339</Color>
+            <Color x:Key="Accent">#f4511e</Color>
 
-                </Style>
+            <Color x:Key="primaryColor">#8d6e63</Color>
+            <Color x:Key="primaryLightColor">#be9c91</Color>
+            <Color x:Key="primaryDarkColor">#5f4339</Color>
+            <Color x:Key="secondaryColor">#e64a19</Color>
+            <Color x:Key="secondaryLightColor">#ff7d47</Color>
+            <Color x:Key="secondaryDarkColor">#ac0800</Color>
+            <Color x:Key="primaryTextColor">#ffffff</Color>
+            <Color x:Key="secondaryTextColor">#000000</Color>
 
-                <Style x:Key="TitleLabel" TargetType="Label">
-                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
-                    <Setter Property="FontSize" Value="Small" />
-                    <Setter Property="FontFamily" Value="Arial" />
-                    <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                    <Setter Property="VerticalTextAlignment" Value="Center"/>
-                </Style>
+            <Color x:Key="StatusBarColor">#5f4339</Color>
+            <Color x:Key="TabBarColor">#8c6d62</Color>
+            <Color x:Key="BackgroundColor">#bd9b8f</Color>
+            <Color x:Key="SecondaryColor">#e64a19</Color>
 
-                <Style x:Key="MainLabel" TargetType="Label">
-                    <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
-                    <Setter Property="FontSize" Value="15" />
-                    <Setter Property="FontFamily" Value="Arial" />
-                    <Setter Property="HorizontalOptions" Value="Center"/>
-                    <Setter Property="Margin" Value="10"/>
-                </Style>
+            <!-- ESTILOS -->
 
-                <Style x:Key="MenuLabel" TargetType="Label">
-                    <Setter Property="TextColor" Value="White" />
-                    <Setter Property="FontSize" Value="15" />
-                    <Setter Property="FontFamily" Value="Arial" />
-                    <Setter Property="HorizontalOptions" Value="Center"/>
-                </Style>
+            <Style x:Key="StatusLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontFamily" Value="Arial" />
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource StatusBarColor}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
 
-                <Style  x:Key="LoginButton" TargetType="Button">
+            <Style x:Key="StatusRLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="Arial" />
+                <Setter Property="Margin" Value="20,0,0,5"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="Entrys" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="{DynamicResource TabBarColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryColor}" />
+                <Setter Property="FontSize" Value="Small" />
+
+            </Style>
+
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="Arial" />
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="MainLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="Arial" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+
+            <Style x:Key="MenuLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="Arial" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <!--<Style  x:Key="LoginButton" TargetType="Button">
                     <Setter Property="BackgroundColor" Value="#3B5998" />
                     <Setter Property="TextColor" Value="White" />
                     <Setter Property="HeightRequest" Value="70" />
@@ -76,9 +133,9 @@
                             <OnPlatform x:TypeArguments="FileImageSource" Android="facebook.png" WinPhone="Assets/facebook.png" iOS="Resources/facebook.png"/>
                         </Setter.Value>
                     </Setter>
-                </Style>
+                </Style>-->
 
-                <Style  x:Key="LogOutButton" TargetType="Button">
+                <!--<Style  x:Key="LogOutButton" TargetType="Button">
                     <Setter Property="BackgroundColor" Value="DarkRed" />
                     <Setter Property="TextColor" Value="White" />
                     <Setter Property="HeightRequest" Value="70" />
@@ -88,14 +145,14 @@
                             <OnPlatform x:TypeArguments="FileImageSource" Android="facebook.png" WinPhone="Assets/facebook.png" iOS="Resources/facebook.png"/>
                         </Setter.Value>
                     </Setter>
-                </Style>
+                </Style>-->
 
-                <Style x:Key="Banner" TargetType="Image">
+                <Style x:Key="loginBackground" TargetType="Image">
                     <Setter Property="Source">
                         <Setter.Value>
                             <OnIdiom x:TypeArguments="ImageSource">
                                 <OnIdiom.Phone>
-                                    <OnPlatform x:TypeArguments="ImageSource" iOS="Resources/banner.png" Android="banner.png"  />
+                                    <OnPlatform x:TypeArguments="ImageSource" iOS="Resources/back.jpg" Android="back.jpg"  />
                                 </OnIdiom.Phone>
                                 <OnIdiom.Desktop>
                                     <OnPlatform x:TypeArguments="ImageSource"  WinPhone="Assets/bannerDesktop.png" />
@@ -108,7 +165,7 @@
                     </Setter>
                 </Style>
 
-                <Style  x:Key="AdminButton" TargetType="Button">
+            <!--<Style  x:Key="AdminButton" TargetType="Button">
                     <Setter Property="BackgroundColor" Value="#a4d6a6" />
                     <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
                     <Setter Property="HeightRequest" Value="70" />
@@ -130,8 +187,7 @@
                 <Style x:Key="TabbedPage" TargetType="TabbedPage">
                     <Setter Property="BarBackgroundColor" Value="{StaticResource TabBarColor}"/>
                     <Setter Property="BarTextColor" Value="White"/>
-                </Style>
-            </ResourceDictionary>
-
+                </Style>-->
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

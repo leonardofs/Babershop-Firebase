@@ -17,11 +17,21 @@ namespace BarbeariaFirebase
          */
         public App() : this(null) { }
 
-        public App(IPlatformInitializer initializer) : base(initializer) { }
+        public App(IPlatformInitializer initializer) : base(initializer) {
+
+
+
+        }
 
         protected override async void OnInitialized()
         {
             InitializeComponent();
+            
+
+            /// configuração do Xamarin.HotReload
+            #if DEBUG
+                        HotReloader.Current.Run(this);
+            #endif
 
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }

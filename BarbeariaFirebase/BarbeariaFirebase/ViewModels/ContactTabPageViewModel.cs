@@ -17,6 +17,9 @@ namespace BarbeariaFirebase.ViewModels
         public readonly double lat, lng;
         public string location;
 
+
+        public string iconButton { get; set; }
+
         public ContactTabPageViewModel(INavigationService navigationService):base(navigationService)
         {
             location = "Abrir no Mapa";
@@ -25,6 +28,9 @@ namespace BarbeariaFirebase.ViewModels
             lng = -44.912665;
             CallBarberCommand = new DelegateCommand(CallBarber);
             OpenMapCommand = new DelegateCommand(async () => await OpenMap());
+
+            iconButton = "map-marked-alt";
+
 
         }
 

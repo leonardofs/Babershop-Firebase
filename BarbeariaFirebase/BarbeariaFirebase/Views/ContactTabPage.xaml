@@ -2,24 +2,60 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:BarbeariaFirebase.Converters;assembly=BarbeariaFirebase"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="BarbeariaFirebase.Views.ContactTabPage"
              Title="Onde Estamos">
 
+    <ContentPage.IconImageSource>
+        <FontImageSource Glyph="map-signs" 
+                                 FontFamily="{StaticResource FontAwesomeSolid}"
+                                Color="White"/>
+    </ContentPage.IconImageSource>
+
+    <ContentPage.Resources>
+        <c:IconAndTextConverter x:Key="IconAndTextConverter"/>
+        
+    </ContentPage.Resources>
     <AbsoluteLayout>
         <!--x, y, width, height-->
+        <Frame AbsoluteLayout.LayoutBounds=".5,0.1,1,.2" AbsoluteLayout.LayoutFlags="All" >
+            <StackLayout Orientation="Horizontal" >
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Glyph="phone-alt" 
+                                     FontFamily="{StaticResource FontAwesomeSolid}"
+                                     Color="{StaticResource secondaryColor}"
+                                     Size="33"/>
+                    </Image.Source>
 
-        <Label x:Name="Call"  Style="{DynamicResource TitleLabel}" Text="Faça-nos uma Ligação: (37) 3222-2222" 
-               AbsoluteLayout.LayoutBounds=".5,0.1,1,.1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="red">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding CallBarberCommand}"/>
-            </Label.GestureRecognizers>
-        </Label>
+                </Image>
+                <Label x:Name="Call"  Style="{DynamicResource TitleLabel}" Text="Faça-nos uma Ligação: (37) 3222-2222" AbsoluteLayout.LayoutBounds=".5,0.1,1,.2" AbsoluteLayout.LayoutFlags="All">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CallBarberCommand}"/>
+                    </Label.GestureRecognizers>
 
-        <Button x:Name="Map"  Text="Abri no Mapa" Command="{Binding OpenMapCommand}"
-               AbsoluteLayout.LayoutBounds=".5, .95, .95, .1" AbsoluteLayout.LayoutFlags="All" CornerRadius="30" >
+                </Label>
+            </StackLayout>
+        </Frame>
+
+
+        <Button x:Name="Map"
+                Text="Abrir no mapa" 
+                TextColor="{StaticResource primaryTextColor}"
+                FontFamily="Arial"
+                Command="{Binding OpenMapCommand}"
+                BackgroundColor="{StaticResource Accent}"
+                CornerRadius="10" 
+                AbsoluteLayout.LayoutBounds=".5, .95, .95, .1" AbsoluteLayout.LayoutFlags="All" 
+                ContentLayout="Left,5" HorizontalOptions="Center">
+
+            <Button.ImageSource>
+                <FontImageSource Glyph="{Binding iconButton}" 
+                                 FontFamily="{StaticResource FontAwesomeSolid}"
+                                 Color="White"/>
+            </Button.ImageSource>
         </Button>
-
 
     </AbsoluteLayout>
 </ContentPage>

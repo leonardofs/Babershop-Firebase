@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BarbeariaFirebase.Views.loginPage"
+             Title="Login">
+    
+    <ContentPage.IconImageSource>
+        <FontImageSource Glyph="sign-in-alt" 
+                                 FontFamily="{StaticResource FontAwesomeSolid}"
+                                Color="White"/>
+    </ContentPage.IconImageSource>
+
+    <!--<AbsoluteLayout>-->
+
+
+        <!--<Grid Padding="0" RowSpacing="0" ColumnSpacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >-->
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Source="back.jpg" Grid.RowSpan="2" Aspect="AspectFill" />
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="20,10,10,20" Grid.RowSpan="2" >
+                    <Entry Placeholder="usuario" FontSize="Large"   
+                FontFamily="Georgia" HeightRequest="50">
+                        <Entry.PlaceholderColor>
+                            <OnPlatform x:TypeArguments="Color" Android="Silver" />
+                        </Entry.PlaceholderColor>
+                        <Entry.TextColor>
+                            <OnPlatform x:TypeArguments="Color" Android="White" />
+                        </Entry.TextColor>
+                    </Entry>
+                    <Entry Placeholder="Senha" FontSize="Large"   
+                FontFamily="Georgia" HeightRequest="50" IsPassword="true">
+                        <Entry.PlaceholderColor>
+                            <OnPlatform x:TypeArguments="Color" Android="Silver" />
+                        </Entry.PlaceholderColor>
+                        <Entry.TextColor>
+                            <OnPlatform x:TypeArguments="Color" Android="White" />
+                        </Entry.TextColor>
+                    </Entry>
+                    <BoxView Color="Transparent" HeightRequest="10" />
+
+                    <Button Text="registrar" 
+                            BackgroundColor="#3b5998" 
+                            TextColor="#ffffff"   
+                            FontSize="Large" CornerRadius="10"/>
+
+                    <Button Text="entrar"
+                            BackgroundColor="#fa3c4c"
+                            TextColor="#ffffff"   
+                            FontSize="Large" CornerRadius="10"/>
+                </StackLayout>
+
+            </Grid>
+        </Grid>
+
+
+    <!--</AbsoluteLayout>-->
+    
+</ContentPage>
+

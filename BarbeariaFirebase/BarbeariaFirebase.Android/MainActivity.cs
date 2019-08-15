@@ -19,6 +19,7 @@ namespace BarbeariaFirebase.Droid
            Xamarin.Essentials.Platform.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 94, 66, 56));
             LoadApplication(new App(new AndroidInitializer()));
         }
 
